@@ -1,0 +1,21 @@
+---
+
+- name: terraform,ansible,nginx
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: TEST1 NGINX
+      apt:
+        name: nginx
+        state: latest
+        update_cache: true
+
+    - name: TEST2 NGINX
+      systemd:
+        name: nginx
+        state: started

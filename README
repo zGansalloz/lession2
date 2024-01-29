@@ -1,0 +1,11 @@
+1. Для запуска скрипта установките переменные
+export YC_TOKEN=$(ВАШ ТОКЕН)
+export TF_VAR_yc_token=$YC_TOKEN
+
+2. Создайте файл сервис аккаунта (если его нет).
+yc iam key create --service-account-name my-robot --output key.json
+export YC_SERVICE_ACCOUNT_KEY_FILE=/home/user/authorized_key.json
+
+3. Настройка переменных
+ - (variables.tf) Укажите расположение приватного ключа в variable "private_key" по умолчанию: ~/.ssh/id_rsa
+ - (main.tf) Укажите расположения публичного ключа в metadata. По умолчанию: ~/.ssh/id_rsa.pub
